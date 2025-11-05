@@ -49,6 +49,7 @@ fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') - 开始构建固件..."
 echo "查看repositories.conf信息——————"
 cat repositories.conf
+
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
 PACKAGES="$PACKAGES curl"
@@ -56,13 +57,27 @@ PACKAGES="$PACKAGES openssh-sftp-server"
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-package-manager-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
+# 服务——FileBrowser 用户名admin 密码admin
+PACKAGES="$PACKAGES luci-i18n-filebrowser-go-zh-cn"
+
 PACKAGES="$PACKAGES luci-theme-argon"
-PACKAGES="$PACKAGES luci-app-argon-config"
-PACKAGES="$PACKAGES luci-i18n-argon-config-zh-cn"
+# PACKAGES="$PACKAGES luci-app-argon-config"
+# PACKAGES="$PACKAGES luci-i18n-argon-config-zh-cn"
+
+PACKAGES="$PACKAGES luci-i18n-udpxy-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-omcproxy-zh-cn"
+
 PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
+
+PACKAGES="$PACKAGES php8"
+PACKAGES="$PACKAGES php8-cgi"
+
 PACKAGES="$PACKAGES luci-i18n-passwall-zh-cn"
-PACKAGES="$PACKAGES luci-app-openclash"
-PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
+# PACKAGES="$PACKAGES luci-app-openclash"
+# PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
+
+PACKAGES="$PACKAGES luci-proto-wireguard"
+
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
     PACKAGES="$PACKAGES luci-i18n-dockerman-zh-cn"
